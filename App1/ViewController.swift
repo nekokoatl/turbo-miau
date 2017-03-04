@@ -16,12 +16,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    @IBAction func meow(sender: AnyObject) {
+    @IBAction func meow(_ sender: AnyObject) {
         print("meow")
         // Load
-        let soundURL = NSBundle.mainBundle().URLForResource("meow", withExtension: "wav")
+        let soundURL = Bundle.main.url(forResource: "meow", withExtension: "wav")
         var mySound: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(soundURL!, &mySound)
+        AudioServicesCreateSystemSoundID(soundURL! as CFURL, &mySound)
         
         // Play
         AudioServicesPlaySystemSound(mySound);
